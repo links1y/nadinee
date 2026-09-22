@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,8 +18,8 @@
       --gold-accent: #fcd34d;
       --text-pink-light: #ffe5f1;
       --text-gold: #fde68a;
-      --glass-pink: rgba(74, 3, 41, 0.75);
-      --glass-border: rgba(255, 102, 178, 0.35);
+      --glass-pink: rgba(74, 3, 41, 0.55);
+      --glass-border: rgba(255, 102, 178, 0.4);
       --pink-glow: rgba(255, 42, 133, 0.45);
     }
 
@@ -201,22 +201,36 @@
       transform: translateY(0) scale(1);
     }
 
+    /* El Cadre El Kbir fih Glassmorphism, Video Background, w-Text */
     .card {
       position: relative;
       overflow: hidden;
-      background: var(--glass-pink);
+      background: rgba(45, 2, 24, 0.65);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
       border: 1.5px solid var(--glass-border);
-      backdrop-filter: blur(35px);
-      -webkit-backdrop-filter: blur(35px);
-      border-radius: 38px;
-      padding: 44px 38px 36px;
+      border-radius: 40px;
+      padding: 40px 32px;
       box-shadow: 0 30px 90px rgba(0, 0, 0, 0.7), 0 0 40px rgba(255, 42, 133, 0.25);
       display: flex;
       flex-direction: column;
-      gap: 22px;
+      gap: 20px;
+    }
+
+    .card-bg-video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: blur(5px) brightness(0.5);
+      transform: scale(1.08);
+      z-index: 0;
     }
 
     .header-box {
+      position: relative;
+      z-index: 2;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -233,7 +247,8 @@
       letter-spacing: 2.5px;
       text-transform: uppercase;
       color: var(--text-gold);
-      background: rgba(255, 42, 133, 0.25);
+      background: rgba(255, 42, 133, 0.35);
+      backdrop-filter: blur(8px);
       padding: 8px 16px;
       border-radius: 100px;
       border: 1px solid rgba(252, 211, 77, 0.4);
@@ -242,21 +257,36 @@
     }
 
     h1 {
+      position: relative;
+      z-index: 2;
       font-family: 'Playfair Display', serif;
-      font-size: 2.8rem;
+      font-size: 2.5rem;
       font-weight: 700;
       font-style: italic;
       line-height: 1.15;
       color: #ff99cc;
       letter-spacing: -0.5px;
-      text-shadow: 0 0 18px rgba(255, 42, 133, 0.4);
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
     }
 
+    .divider {
+      position: relative;
+      z-index: 2;
+      width: 70px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--hot-pink), var(--gold-accent), transparent);
+      border-radius: 3px;
+    }
+
+    /* El Message Mebchouch f Cadre Sghir */
     .message {
-      font-size: 0.96rem;
-      font-weight: 400;
-      line-height: 1.95;
+      position: relative;
+      z-index: 2;
+      font-size: 0.98rem;
+      font-weight: 500;
+      line-height: 1.85;
       color: #ffd9ec;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
     }
 
     .message p {
@@ -270,28 +300,24 @@
     .message span.highlight {
       color: #ffffff;
       font-weight: 600;
-      background: linear-gradient(120deg, rgba(255, 42, 133, 0.4) 0%, rgba(255, 42, 133, 0.05) 100%);
+      background: linear-gradient(120deg, rgba(255, 42, 133, 0.55) 0%, rgba(255, 42, 133, 0.15) 100%);
       padding: 3px 8px;
-      border-radius: 8px;
+      border-radius: 12px;
       border-left: 3px solid var(--hot-pink);
     }
 
-    .divider {
-      width: 70px;
-      height: 3px;
-      background: linear-gradient(90deg, var(--hot-pink), var(--gold-accent), transparent);
-      border-radius: 3px;
-    }
-
     .player {
-      background: rgba(31, 1, 17, 0.7);
-      border: 1px solid rgba(255, 102, 178, 0.3);
-      border-radius: 22px;
+      position: relative;
+      z-index: 2;
+      background: rgba(25, 0, 14, 0.75);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 102, 178, 0.35);
+      border-radius: 24px;
       padding: 16px 20px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      margin-top: 6px;
+      margin-top: 4px;
       box-shadow: inset 0 0 15px rgba(255, 42, 133, 0.15);
     }
 
@@ -343,7 +369,7 @@
     }
 
     .controls-btn {
-      background: rgba(255, 42, 133, 0.2);
+      background: rgba(255, 42, 133, 0.25);
       border: 1px solid rgba(255, 102, 178, 0.4);
       color: #ffffff;
       cursor: pointer;
@@ -352,7 +378,7 @@
       text-transform: uppercase;
       font-weight: 700;
       padding: 8px 14px;
-      border-radius: 12px;
+      border-radius: 14px;
       transition: all 0.25s ease;
     }
 
@@ -362,9 +388,9 @@
     }
 
     @media (max-width: 480px) {
-      .card { padding: 34px 24px 28px; }
-      h1 { font-size: 2.3rem; }
-      .message { font-size: 0.91rem; line-height: 1.85; }
+      .card { padding: 32px 20px; }
+      h1 { font-size: 2.1rem; }
+      .message { font-size: 0.92rem; line-height: 1.8; }
       .overlay-card { padding: 42px 24px; }
       .overlay-title { font-size: 2.2rem; }
     }
@@ -396,6 +422,9 @@
   <div class="card-container" id="mainContainer">
 
     <div class="card">
+      <video class="card-bg-video" id="bgVideo" autoplay loop muted playsinline>
+        <source src="nadine_aamri_14030402_203317394.mp4" type="video/mp4">
+      </video>
 
       <div class="header-box">
         <div class="bow-icon">🎀</div>
@@ -408,39 +437,35 @@
 
       <div class="divider"></div>
 
+      <!-- El message mobasharatan fel cadre el kbir -->
       <div class="message">
-
         <p>
-          I wanted to write these words straight from my heart, as a constant reminder of how deeply precious you are to me. 🤍
+          Naarf elli enti methayra barcha 3la Talel w elli yhemmek barcha ama matkhallish echakk yo9tlek w ma tkhallich el mochkel yhayerlek 9albek.
         </p>
 
         <p>
           <span class="highlight">
-            Never let unkind words or anyone’s lack of appreciation make you second-guess your value.
+            Khalli dima fik el amal w koun positive 5ater enti t7ebbou w hedha wa7dou ykhalik tetmana el 5ir
           </span>
-          You are an extraordinary soul—so beautiful, genuinely kind, and endlessly graceful. If someone failed to see your true worth, it reflects only their blindness, never your value.
         </p>
 
         <p>
-          Please never allow anyone to make you doubt yourself or feel undeserving of life's sweetest blessings. You deserve all the beauty, happiness, and peace this world has to offer—and so much more.
+          ed3ilo bel 5ir w 9oul dima inchallah rabbi ysahel 3lih w inchallah kol chay yet7assen binetkom. Marat el wa9t y7el 7ajet ma najmouch n7ellohom.
         </p>
 
         <p>
-          I want you to always remember that I am far more than just a brother to you; I am your forever safe haven. Whenever life gets heavy, you never have to explain or say much—just know I will always be right here, holding your hand through it all.
+          w enti zeda khalli 9albek merte7, ma tethayarch barcha w ma tkhammemch fi kol chay. Elli maktoublek bech yjiik w inchallah el 5ir dima 9oddemkom.
         </p>
 
         <p>
           <span class="highlight">
-            I love you endlessly, and nothing brings me more joy than seeing you radiant, peaceful, and fiercely confident in who you are. ✨
+            W ken t7eb ta7ki wala juste t7eb chkoun ena dima houni. Dima tdhaker elli 3andek khouk wa9ef m3ak w yheb ychoufek fer7ana ❤️
           </span>
         </p>
-
       </div>
 
       <div class="player" id="playerBox">
-
         <div class="track-meta">
-
           <div class="equalizer">
             <div class="eq-bar"></div>
             <div class="eq-bar"></div>
@@ -449,14 +474,12 @@
 
           <div>
             <div class="song-title">
-              Best Part x Summertime Sadness
+              Special Track for You
             </div>
-
             <div class="artist-name">
-              Instrumental Audio
+              Background Audio
             </div>
           </div>
-
         </div>
 
         <button
@@ -466,7 +489,6 @@
         >
           Mute
         </button>
-
       </div>
 
     </div>
@@ -475,90 +497,65 @@
 
   <audio id="bgAudio" loop preload="auto">
     <source
-      src="best part _ summertime sadness x i wanna be yours instrumental - sped up.mp3"
+      src="ssstik.io_1790093894030.mp3"
       type="audio/mpeg"
     >
   </audio>
 
   <script>
-
     const audio = document.getElementById('bgAudio');
+    const bgVideo = document.getElementById('bgVideo');
     const overlay = document.getElementById('overlay');
     const mainContainer = document.getElementById('mainContainer');
     const playerBox = document.getElementById('playerBox');
     const muteBtn = document.getElementById('muteBtn');
 
     function startExperience() {
-
       overlay.classList.add('hidden');
       mainContainer.classList.add('visible');
 
       audio.volume = 0.55;
 
       audio.play().catch(err => {
-        console.log(
-          'Autoplay restriction handled:',
-          err
-        );
+        console.log('Autoplay restriction handled:', err);
       });
 
+      if (bgVideo) {
+        bgVideo.play().catch(err => console.log(err));
+      }
     }
 
     function toggleAudio() {
-
       if (audio.muted) {
-
         audio.muted = false;
         muteBtn.innerText = 'Mute';
         playerBox.classList.remove('paused');
-
       } else {
-
         audio.muted = true;
         muteBtn.innerText = 'Unmute';
         playerBox.classList.add('paused');
-
       }
-
     }
 
     function createGirlParticle() {
-
       const particle = document.createElement('div');
-
       particle.classList.add('sparkle');
 
-      const icons = [
-        '🎀',
-        '✨',
-        '💖',
-        '👑',
-        '💗',
-        '🌷'
-      ];
+      const icons = ['🎀', '✨', '💖', '👑', '💗', '🌷'];
+      particle.innerText = icons[Math.floor(Math.random() * icons.length)];
 
-      particle.innerText =
-        icons[Math.floor(Math.random() * icons.length)];
-
-      particle.style.left =
-        Math.random() * 100 + "vw";
-
-      particle.style.animationDuration =
-        (Math.random() * 4 + 6) + "s";
-
-      particle.style.fontSize =
-        (Math.random() * 8 + 14) + "px";
+      particle.style.left = Math.random() * 100 + "vw";
+      particle.style.animationDuration = (Math.random() * 4 + 6) + "s";
+      particle.style.fontSize = (Math.random() * 8 + 14) + "px";
 
       document.body.appendChild(particle);
 
       setTimeout(() => {
         particle.remove();
       }, 10000);
-
     }
 
     setInterval(createGirlParticle, 500);
-
   </script>
 
 </body>
